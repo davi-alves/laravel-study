@@ -15,6 +15,7 @@ $RECYCLE.BIN/
 ### Linux ###
 .*
 !.gitignore
+!.gitkeep
 *~
 
 ### OSX ###
