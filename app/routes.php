@@ -20,3 +20,6 @@ Route::get('users', function()
 {
     return View::make('users.index')->with('title', 'Home');;
 });
+
+
+Route::resource('posts', 'PostsController');
