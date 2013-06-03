@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-  {{ Form::open(array('route' => 'posts.store', 'class' => 'form-horizontal')) }}
+  {{ Form::open(array('route' => 'admin.posts.store', 'class' => 'form-horizontal')) }}
     <div class="control-group">
       {{ Form::label('titulo', 'Título', array('class' => 'control-label')) }}
       <div class="controls">
@@ -16,7 +16,7 @@
     </div>
     <div class="form-actions">
       {{ Form::button('Cadastrar', array('type' => 'submit', 'class' => 'btn btn-primary')) }}
-      <a href="{{ url('posts') }}" class="btn">Cancelar</a>
+      <a href="{{ route('admin.posts.index') }}" class="btn">Cancelar</a>
     </div>
   {{ Form::close() }}
 @stop

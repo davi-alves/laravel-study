@@ -1,8 +1,9 @@
 <?php
 
-class Post extends Eloquent {
-    protected $guarded = array();
-    protected $fillable = array('titulo', 'resenha');
+use LaravelBook\Ardent\Ardent;
 
-    public static $rules = array();
+class Post extends Ardent {
+    protected $guarded = array();
+
+    public static $rules = array('titulo' => 'required', 'resenha' => 'required');
 }

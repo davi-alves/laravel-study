@@ -8,7 +8,7 @@
   <meta name="author" content="">
 
   <!-- Le styles -->
-  <link rel="stylesheet" href="{{ url('assets/bootstrap/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css')}}">
 
   <style type="text/css">
 
@@ -64,7 +64,7 @@
     }
 
     </style>
-    <link rel="stylesheet" href="{{ url('assets/bootstrap/css/bootstrap-responsive.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap-responsive.min.css')}}">
   </head>
   <body>
     <!-- Part 1: Wrap all page content here -->
@@ -87,5 +87,7 @@
         <p class="muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
       </div>
     </div>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 </body>
 </html>

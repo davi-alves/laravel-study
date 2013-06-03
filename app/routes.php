@@ -13,13 +13,44 @@
 
 Route::get('/', function()
 {
-  return View::make('hello');
+    return View::make('hello');
 });
 
-Route::get('users', function()
+Route::group(array('before' => 'logged'), function ()
 {
-    return View::make('users.index')->with('title', 'Home');;
+    Route::get('login', array('as' => 'login', function()
+    {
+        return View::make('login');
+    }));
+
+    Route::post('login', array('before' => 'csrf', function ()
+    {
+        $credentials = array(
+            'username' => Input::get('username'),
+            'password' =>Input::get('password'),
+        );
+        if(Auth::attempt($credentials)){
+            return Redirect::intended('dashboard');
+        }
+
+        return Redirect::to('login')->withErrors(array('login' => 'Usuário ou Senha inválidos'));
+    }));
 });
 
+Route::group(array('before' => 'auth', 'prefix' => 'admin'), function ()
+{
+    Route::get('logout', function ()
+    {
+        if(Auth::check()){
+            Auth::logout();
+        }
+        return Redirect::to('login');
+    });
 
-Route::resource('posts', 'PostsController');
+    Route::resource('posts', 'PostsController');
+
+    Route::get('dashboard', array('as' => 'dashboard', 'before' => 'auth', function ()
+    {
+        var_dump(Auth::user());
+    }));
+});

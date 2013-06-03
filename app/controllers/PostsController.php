@@ -11,7 +11,10 @@ class PostsController extends BaseController {
      */
     public function index()
     {
-        //
+        return View::make('posts.index')->with(array(
+            'entities' => Post::all(),
+            'title' => $this->title
+        ));
     }
 
     /**
@@ -31,13 +34,12 @@ class PostsController extends BaseController {
      */
     public function store()
     {
-        $validation = new \Services\Validators\Post;
-        if($validation->passes()){
-            Post::create(Input::all());
+        $post = new Post(Input::all());
+        if($post->save()){
             return Redirect::route('posts.index');
         }
 
-        return Redirect::back()->withInput()->withErrors($validation->errors);
+        return Redirect::back()->withInput()->withErrors($post->errors());
     }
 
     /**
