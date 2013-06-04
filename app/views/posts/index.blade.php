@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.backend.master')
 
 @section('content')
   <a href="{{ route('admin.posts.create') }}" class="btn btn-primary">Adicionar Novo</a>
@@ -9,6 +9,7 @@
         <th>Título</th>
         <th>Postado em</th>
         <th>Atualizado em</th>
+        <th>&nbsp;</th>
       </tr>
     </thead>
     <tbody>
@@ -20,9 +21,10 @@
         @foreach($entities as $entity)
         <tr>
           <td>{{ $entity->id }}</td>
-          <td>{{ $entity->titulo }}</td>
+          <td>{{ link_to_route('admin.posts.edit', $entity->titulo, array('posts' => $entity->id)) }}</td>
           <td>{{ $entity->created_at->format('d-m-Y H:i') }}</td>
           <td>{{ $entity->updated_at->format('d-m-Y H:i') }}</td>
+          <td>{{ link_to_route('admin.posts.destroy', 'Delete', array('posts' => $entity->id), array('class' => 'delete-link')) }}</td>
         </tr>
         @endforeach
       @endif

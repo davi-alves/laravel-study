@@ -36,7 +36,7 @@ class PostsController extends BaseController {
     {
         $post = new Post(Input::all());
         if($post->save()){
-            return Redirect::route('posts.index');
+            return Redirect::route('admin.posts.index');
         }
 
         return Redirect::back()->withInput()->withErrors($post->errors());
@@ -61,7 +61,12 @@ class PostsController extends BaseController {
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        if(!$post) {
+            return Redirect::back()->withInput()->withErrors(array('not_found' => 'Post não encontrado'));
+        }
+
+        return View::make('posts.edit')->with(array('entity' => $post, 'title' => $this->title .' - Editar'));
     }
 
     /**
@@ -72,7 +77,13 @@ class PostsController extends BaseController {
      */
     public function update($id)
     {
-        //
+        $post = Post::find($id);
+        $post->fill(Input::all());
+        if($post->save()){
+            return Redirect::route('admin.posts.index');
+        }
+
+        return Redirect::back()->withInput()->withErrors($post->errors());
     }
 
     /**

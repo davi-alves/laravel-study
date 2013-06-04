@@ -1,9 +1,9 @@
 <?php
 
-use LaravelBook\Ardent\Ardent;
 use Illuminate\Auth\UserInterface;
 
-class User extends Ardent implements UserInterface {
+class User extends Base implements UserInterface
+{
     protected $guarded = array();
     protected $hidden = array('password');
 
@@ -14,7 +14,8 @@ class User extends Ardent implements UserInterface {
      *
      * @return mixed
      */
-    public function getAuthIdentifier() {
+    public function getAuthIdentifier()
+    {
         return $this->id;
     }
 
@@ -23,7 +24,8 @@ class User extends Ardent implements UserInterface {
      *
      * @return string
      */
-    public function getAuthPassword() {
+    public function getAuthPassword()
+    {
         return $this->password;
     }
 }

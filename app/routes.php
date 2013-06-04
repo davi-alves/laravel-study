@@ -11,13 +11,17 @@
 |
 */
 
-Route::get('/', function()
-{
+/** HOME */
+Route::get('/', function() {
     return View::make('hello');
 });
+/** LOGIN */
+Route::group(array('before' => 'logged'), function () {
+    /** ADMIN-BASE */
+    Route::get('admin', function () {
+        return Redirect::route('login');
+    });
 
-Route::group(array('before' => 'logged'), function ()
-{
     Route::get('login', array('as' => 'login', function()
     {
         return View::make('login');
@@ -30,15 +34,17 @@ Route::group(array('before' => 'logged'), function ()
             'password' =>Input::get('password'),
         );
         if(Auth::attempt($credentials)){
-            return Redirect::intended('dashboard');
+            return Redirect::intended('admin/dashboard');
         }
 
         return Redirect::to('login')->withErrors(array('login' => 'Usuário ou Senha inválidos'));
     }));
 });
 
-Route::group(array('before' => 'auth', 'prefix' => 'admin'), function ()
-{
+/** ADMIN SAFE GROUP */
+Route::group(array('before' => 'auth', 'prefix' => 'admin'), function () {
+
+    /** LOGOUT */
     Route::get('logout', function ()
     {
         if(Auth::check()){
@@ -47,10 +53,12 @@ Route::group(array('before' => 'auth', 'prefix' => 'admin'), function ()
         return Redirect::to('login');
     });
 
+    /** POSTS RESOURCE */
     Route::resource('posts', 'PostsController');
 
+    /** ADMIN DASHBOARD */
     Route::get('dashboard', array('as' => 'dashboard', 'before' => 'auth', function ()
     {
-        var_dump(Auth::user());
+        return View::make('admin.dashboard');
     }));
 });

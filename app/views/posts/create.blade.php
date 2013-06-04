@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.backend.master')
 
 @section('content')
   {{ Form::open(array('route' => 'admin.posts.store', 'class' => 'form-horizontal')) }}
