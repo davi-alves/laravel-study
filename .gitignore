@@ -39,12 +39,4 @@ Icon
 /vendor
 composer.phar
 composer.lock
-/bootstrap/compiled.php
-
-### SublimeText ###
-# SublimeText project files
-*.sublime-workspace
-*.sublime-project
-
-### Apache ###
-!.htaccess
+.DS_Store
