@@ -40,3 +40,4 @@ Icon
 composer.phar
 composer.lock
 .DS_Store
+*.orig
