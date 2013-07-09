@@ -40,4 +40,9 @@ Icon
 composer.phar
 composer.lock
 .DS_Store
+
+### Git ###
 *.orig
+
+### Sublime Text ###
+*.sublime-*
