@@ -1,0 +1,24 @@
+{
+    "name": "index/uploader",
+    "description": "Ajax file upload",
+    "license": "BSD-2-Clause",
+    "authors": [
+        {
+            "name": "Davi Alves",
+            "email": "davi.alves@indexdigital.com.br"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Index\\Uploader": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
