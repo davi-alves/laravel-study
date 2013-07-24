@@ -15,6 +15,7 @@
 Route::get('/', function() {
     return View::make('hello');
 });
+
 /** LOGIN */
 Route::group(array('before' => 'logged'), function () {
     /** ADMIN-BASE */

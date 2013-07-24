@@ -73,7 +73,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="http://code.jquery.com/jquery.js"></script>
-    {{ HTML::script('assets/bootstrap/js/bootstrap.min.js') }}
+    {{ HTML::script('packages/bootstrap/js/bootstrap.min.js') }}
 
   </body>
 </html>
